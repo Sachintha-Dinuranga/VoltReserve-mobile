@@ -1,0 +1,28 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText android:id="@+id/etFirstName" android:hint="First Name" />
+        <EditText android:id="@+id/etLastName" android:hint="Last Name" />
+        <EditText android:id="@+id/etEmail" android:hint="Email" />
+        <EditText android:id="@+id/etPhone" android:hint="Phone" />
+        <EditText android:id="@+id/etNic" android:hint="NIC" />
+        <EditText android:id="@+id/etPassword" android:hint="Password" android:inputType="textPassword"/>
+
+        <!-- Vehicle info -->
+        <EditText android:id="@+id/etVehicleMake" android:hint="Vehicle Make" />
+        <EditText android:id="@+id/etVehicleModel" android:hint="Vehicle Model" />
+        <EditText android:id="@+id/etVehicleBattery" android:hint="Battery kWh" android:inputType="numberDecimal"/>
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:text="Register" />
+
+    </LinearLayout>
+</ScrollView>
