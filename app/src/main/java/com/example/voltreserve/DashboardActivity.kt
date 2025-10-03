@@ -1,6 +1,8 @@
 package com.example.voltreserve
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.voltreserve.databinding.ActivityDashboardBinding
 
@@ -12,6 +14,28 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvWelcome.text = "Welcome to Dashboard!"
+        // Example welcome message (replace with actual session user if needed)
+        binding.tvWelcome.text = "Welcome back, EV Owner!"
+
+        // TODO: Replace with actual counts from API
+        binding.tvPendingCount.text = "3"
+        binding.tvUpcomingCount.text = "5"
+
+        // Click listeners for tiles
+//        binding.tileNewReservation.setOnClickListener {
+//            startActivity(Intent(this, NewReservationActivity::class.java))
+//        }
+//
+//        binding.tileCurrentReservations.setOnClickListener {
+//            startActivity(Intent(this, CurrentReservationsActivity::class.java))
+//        }
+//
+//        binding.tileReservationHistory.setOnClickListener {
+//            startActivity(Intent(this, ReservationHistoryActivity::class.java))
+//        }
+//
+//        binding.tileChargingStations.setOnClickListener {
+//            startActivity(Intent(this, ChargingStationsActivity::class.java))
+//        }
     }
 }
