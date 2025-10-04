@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VoltReserve">
         <activity
+            android:name=".OwnerProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
