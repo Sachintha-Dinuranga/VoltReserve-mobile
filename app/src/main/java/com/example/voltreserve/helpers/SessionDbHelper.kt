@@ -41,4 +41,11 @@ class SessionDbHelper(context: Context) :
         db.close()
         return token
     }
+
+    // Add this method to clear the session
+    fun clearSession() {
+        val db = writableDatabase
+        db.execSQL("DELETE FROM session")
+        db.close()
+    }
 }
