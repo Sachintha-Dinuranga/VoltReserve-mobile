@@ -28,6 +28,11 @@ class OwnerProfileActivity : AppCompatActivity() {
 
         loadProfile()
 
+        // Back button - navigate back to dashboard
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
+
         binding.btnUpdate.setOnClickListener {
             val req = UpdateOwnerRequest(
                 firstName = binding.etFirstName.text.toString(),

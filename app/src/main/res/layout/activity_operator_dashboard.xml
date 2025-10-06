@@ -61,7 +61,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quick Actions"
+            android:text="@string/quick_actions"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"

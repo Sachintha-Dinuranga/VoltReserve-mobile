@@ -19,4 +19,8 @@
     <string name="reports_amp_analytics"><![CDATA[Reports & Analytics]]></string>
     <string name="session_history">Session History</string>
     <string name="stations_details">Station Details</string>
+    <string name="profile">Profile</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="change_password">Change Password</string>
+    <string name="back">back\n</string>
 </resources>

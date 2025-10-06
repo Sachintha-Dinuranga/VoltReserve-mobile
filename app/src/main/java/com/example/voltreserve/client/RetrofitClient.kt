@@ -45,4 +45,18 @@ object RetrofitClient {
             .build()
             .create(OwnerApiService::class.java)
     }
+
+    fun staffAuthed(context: Context): AuthApiService {
+        val db = SessionDbHelper(context)
+        val client = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val b = chain.request().newBuilder()
+                db.getSession()?.let { b.addHeader("Authorization", "Bearer $it") }
+                chain.proceed(b.build())
+            }.build()
+
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create())
+            .build().create(AuthApiService::class.java)
+    }
 }

@@ -52,7 +52,7 @@
                 android:layout_width="54dp"
                 android:layout_height="54dp"
                 android:background="@drawable/profile_bg"
-                android:contentDescription="Profile"
+                android:contentDescription="@string/profile"
                 android:padding="8dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/profile" />

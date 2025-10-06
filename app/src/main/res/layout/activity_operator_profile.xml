@@ -24,13 +24,14 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/btnBack"
                 android:layout_width="48dp"
-                android:layout_height="48dp">
+                android:layout_height="48dp"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center">
-
+                    android:gravity="center"
+                    >
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
@@ -50,9 +51,10 @@
                 android:textColor="@color/black"
                 android:textSize="26sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
-        <!-- Profile Header -->
+        <!-- Header: avatar + name/email + Logout -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +62,6 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="32dp">
 
-            <!-- Profile Picture -->
             <androidx.cardview.widget.CardView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -75,7 +76,6 @@
                     android:contentDescription="@string/app_name" />
             </androidx.cardview.widget.CardView>
 
-            <!-- User Info -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                     android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="John Doe"
+                    android:text="Operator"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black" />
@@ -96,13 +96,12 @@
                     android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="user@email.com"
+                    android:text="operator@company.com"
                     android:textSize="14sp"
                     android:textColor="@color/gray_600"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
 
-            <!-- Logout Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
@@ -120,23 +119,23 @@
                 app:iconTint="@color/red_600"/>
         </LinearLayout>
 
-        <!-- Personal Information Section -->
+        <!-- Rest of your existing content remains the same -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Personal Information"
+            android:text="Account Information"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="16dp" />
 
-        <!-- Readonly Info Cards -->
+        <!-- Role -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="12dp"
             app:cardElevation="2dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="12dp"
             app:cardBackgroundColor="@color/gray_50">
 
             <LinearLayout
@@ -148,15 +147,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NIC Number"
+                    android:text="Role"
                     android:textSize="12sp"
                     android:textColor="@color/gray_600" />
 
                 <TextView
-                    android:id="@+id/tvNic"
+                    android:id="@+id/tvRole"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="199912345678"
+                    android:text="StationOperator"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -164,73 +163,41 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Editable Information Section -->
-        <com.google.android.material.textfield.TextInputLayout
+        <!-- Status -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundColor="@color/gray_50"
-            app:boxStrokeColor="@color/green_500"
-            android:layout_marginBottom="16dp">
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@color/gray_50">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etFirstName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Last Name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundColor="@color/gray_50"
-            app:boxStrokeColor="@color/green_500"
-            android:layout_marginBottom="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray_600" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etLastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Active"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundColor="@color/gray_50"
-            app:boxStrokeColor="@color/green_500"
-            android:layout_marginBottom="24dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:padding="16dp"
-                android:textSize="16sp"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Update Profile Button -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update Profile"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="12dp"
-            android:backgroundTint="@color/green_500"
-            android:paddingVertical="16dp"
-            android:layout_marginBottom="32dp"/>
-
-        <!-- Change Password Section -->
+        <!-- Change Password -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -280,73 +247,17 @@
                 android:textSize="16sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Change Password Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Change Password"
+            android:text="@string/change_password"
             android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="12dp"
             android:backgroundTint="@color/green_700"
             android:paddingVertical="16dp"
-            android:layout_marginBottom="32dp"/>
-
-        <!-- Danger Zone -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Danger Zone"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/red_600"
-            android:layout_marginBottom="16dp" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            app:strokeColor="@color/red_200"
-            app:strokeWidth="1dp"
-            android:layout_marginBottom="24dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Deactivate Account"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/red_600" />
-
-                <!-- Fixed the description text -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="You will be logged out immediately and cannot login until admin reactivates your account"
-                    android:textSize="12sp"
-                    android:textColor="@color/gray_600"
-                    android:layout_marginTop="4dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDeactivate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Deactivate Account"
-                    android:textSize="14sp"
-                    app:cornerRadius="8dp"
-                    android:backgroundTint="@color/red_600"
-                    android:layout_marginTop="12dp"
-                    android:paddingHorizontal="20dp"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_marginBottom="8dp"/>
 
     </LinearLayout>
 </ScrollView>
