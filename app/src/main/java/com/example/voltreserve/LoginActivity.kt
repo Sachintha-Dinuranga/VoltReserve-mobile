@@ -33,8 +33,9 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        // In your LoginActivity, update the register navigation:
         binding.tvGoRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterStep1Activity::class.java))
         }
     }
 

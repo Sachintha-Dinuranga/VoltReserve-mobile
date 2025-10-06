@@ -7,5 +7,5 @@ data class RegisterRequest(
     val email: String,
     val phone: String,
     val password: String,
-    val vehicle: Vehicle
+    val vehicle: Vehicle? = null
 )

@@ -6,37 +6,43 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.voltreserve.client.RetrofitClient
-import com.example.voltreserve.databinding.ActivityRegisterBinding
+import com.example.voltreserve.databinding.ActivityRegisterStep3Binding
 import com.example.voltreserve.models.RegisterRequest
 import com.example.voltreserve.models.Vehicle
 import kotlinx.coroutines.launch
 
-class RegisterActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRegisterBinding
+class RegisterStep3Activity : AppCompatActivity() {
+    private lateinit var binding: ActivityRegisterStep3Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityRegisterStep3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnRegister.setOnClickListener {
-            val firstName = binding.etFirstName.text.toString().trim()
-            val lastName = binding.etLastName.text.toString().trim()
-            val email = binding.etEmail.text.toString().trim()
-            val phone = binding.etPhone.text.toString().trim()
-            val nic = binding.etNic.text.toString().trim()
-            val password = binding.etPassword.text.toString().trim()
+        // Get data from previous steps
+        val firstName = intent.getStringExtra("firstName") ?: ""
+        val lastName = intent.getStringExtra("lastName") ?: ""
+        val email = intent.getStringExtra("email") ?: ""
+        val phone = intent.getStringExtra("phone") ?: ""
+        val nic = intent.getStringExtra("nic") ?: ""
+        val password = intent.getStringExtra("password") ?: ""
 
+        binding.btnBack3.setOnClickListener {
+            finish()
+        }
+
+        binding.btnRegister.setOnClickListener {
             val vehicleMake = binding.etVehicleMake.text.toString().trim()
             val vehicleModel = binding.etVehicleModel.text.toString().trim()
             val batteryKWh = binding.etVehicleBattery.text.toString().toDoubleOrNull() ?: 0.0
 
-            if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            // Vehicle is optional, so create only if fields are filled
+            val vehicle = if (vehicleMake.isNotEmpty() || vehicleModel.isNotEmpty() || batteryKWh > 0) {
+                Vehicle(vehicleMake, vehicleModel, batteryKWh)
+            } else {
+                null
             }
 
-            val vehicle = Vehicle(vehicleMake, vehicleModel, batteryKWh)
             val registerRequest = RegisterRequest(nic, firstName, lastName, email, phone, password, vehicle)
             registerUser(registerRequest)
         }
@@ -49,21 +55,21 @@ class RegisterActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body() != null) {
                     val user = response.body()!!
                     Toast.makeText(
-                        this@RegisterActivity,
+                        this@RegisterStep3Activity,
                         "Registration successful! Welcome, ${user.firstName}",
                         Toast.LENGTH_SHORT
                     ).show()
                     // Navigate to Login screen
-                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-                    finish()
+                    startActivity(Intent(this@RegisterStep3Activity, LoginActivity::class.java))
+                    finishAffinity() // Close all registration activities
                 } else {
-                    Toast.makeText(this@RegisterActivity, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    val errorBody = response.errorBody()?.string() ?: "Unknown error"
+                    Toast.makeText(this@RegisterStep3Activity, "Error: $errorBody", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
-                Toast.makeText(this@RegisterActivity, "Exception: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@RegisterStep3Activity, "Exception: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
             }
         }
     }
-
 }

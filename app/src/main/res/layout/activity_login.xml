@@ -4,55 +4,100 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:padding="32dp"
+    android:background="@color/white"
     android:gravity="center">
 
+    <!-- App Logo/Icon -->
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/voltreserve_logo"/>
+
+    <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textSize="28sp"
+        android:text="@string/welcome_back"
+        android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in_to_your_voltreserve_account"
+        android:textSize="14sp"
+        android:textColor="@color/gray_600"
         android:layout_marginBottom="32dp"/>
 
+    <!-- Email Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email">
+        android:hint="@string/email"
+        app:boxStrokeColor="@color/green_500"
+        app:hintTextColor="@color/gray_500"
+        app:boxBackgroundColor="@color/gray_50"
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:padding="16dp"
+            android:textSize="16sp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Password Field with Eye Toggle -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:layout_marginTop="16dp">
+        android:hint="@string/password"
+        app:boxStrokeColor="@color/green_500"
+        app:hintTextColor="@color/gray_500"
+        app:boxBackgroundColor="@color/gray_50"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/green_500"
+        android:layout_marginBottom="24dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textSize="16sp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <!-- Login Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_marginTop="24dp"/>
+        android:text="@string/sign_in"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        android:backgroundTint="@color/green_500"
+        android:layout_marginBottom="16dp"
+        android:padding="16dp"/>
 
+    <!-- Register Link -->
     <TextView
         android:id="@+id/tvGoRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don’t have an account? Register"
-        android:textColor="@color/purple"
-        android:layout_marginTop="16dp"/>
+        android:text="@string/don_t_have_an_account_sign_up"
+        android:textSize="14sp"
+        android:textColor="@color/green_600"
+        android:textStyle="bold"/>
+
 </LinearLayout>
