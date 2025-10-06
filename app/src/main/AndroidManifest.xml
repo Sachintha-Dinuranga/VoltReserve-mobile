@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VoltReserve">
         <activity
+            android:name=".ReservationListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReservationActivity"
+            android:exported="false" />
+        <activity
             android:name=".OwnerProfileActivity"
             android:exported="false" />
         <activity
