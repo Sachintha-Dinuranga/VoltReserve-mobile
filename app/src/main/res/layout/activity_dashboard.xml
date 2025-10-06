@@ -91,21 +91,21 @@
             android:id="@+id/tileNewReservation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Reservation"
+            android:text="Profile"
             android:layout_marginBottom="12dp"/>
 
         <Button
             android:id="@+id/tileCurrentReservations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Current Reservations"
+            android:text="New Reservation"
             android:layout_marginBottom="12dp"/>
 
         <Button
             android:id="@+id/tileReservationHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reservation History"
+            android:text="My Reservations"
             android:layout_marginBottom="12dp"/>
 
         <Button
