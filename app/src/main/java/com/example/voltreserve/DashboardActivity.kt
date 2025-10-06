@@ -21,15 +21,15 @@ class DashboardActivity : AppCompatActivity() {
         binding.tvWelcome.text = "Welcome back, EV Owner!"
 
         // Click listeners for tiles
-        binding.tileNewReservation.setOnClickListener {
+        binding.tileProfile.setOnClickListener {
             startActivity(Intent(this, OwnerProfileActivity::class.java))
         }
 
-        binding.tileCurrentReservations.setOnClickListener {
+        binding.tileNewReservation.setOnClickListener {
             startActivity(Intent(this, ReservationActivity::class.java))
         }
 
-        binding.tileReservationHistory.setOnClickListener {
+        binding.tileMyReservations.setOnClickListener {
             startActivity(Intent(this, ReservationListActivity::class.java))
         }
 
