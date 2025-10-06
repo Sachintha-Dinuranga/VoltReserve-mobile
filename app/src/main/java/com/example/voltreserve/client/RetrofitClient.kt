@@ -2,49 +2,47 @@ package com.example.voltreserve.client
 
 import android.content.Context
 import com.example.voltreserve.helpers.SessionDbHelper
+import com.example.voltreserve.services.AuthApiService
 import com.example.voltreserve.services.OwnerApiService
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object  RetrofitClient {
+object RetrofitClient {
     private const val BASE_URL = "http://192.168.8.135:5029/"
 
-    // Public instance (for login/register, no token needed)
-    val instance: OwnerApiService by lazy {
-        val retrofit = Retrofit.Builder()
+    // For public endpoints (owner register/login, staff login)
+    private val publicRetrofit: Retrofit by lazy {
+        Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        retrofit.create(OwnerApiService::class.java)
     }
 
-    // Authenticated instance (automatically adds token to requests)
-    fun getOwnerService(context: Context): OwnerApiService {
-        val dbHelper = SessionDbHelper(context)
+    val ownerPublic: OwnerApiService by lazy {
+        publicRetrofit.create(OwnerApiService::class.java)
+    }
 
+    val staffPublic: AuthApiService by lazy {
+        publicRetrofit.create(AuthApiService::class.java)
+    }
+
+    // For authenticated owner endpoints (adds Bearer from SQLite)
+    fun ownerAuthed(context: Context): OwnerApiService {
+        val db = SessionDbHelper(context)
         val client = OkHttpClient.Builder()
-            .addInterceptor(Interceptor { chain ->
-                val original = chain.request()
-                val builder = original.newBuilder()
-
-                // Fetch token dynamically from SQLite
-                val token = dbHelper.getSession()
-                token?.let {
-                    builder.addHeader("Authorization", "Bearer $it")
-                }
-
+            .addInterceptor { chain ->
+                val builder = chain.request().newBuilder()
+                db.getSession()?.let { builder.addHeader("Authorization", "Bearer $it") }
                 chain.proceed(builder.build())
-            })
+            }
             .build()
 
-        val retrofit = Retrofit.Builder()
+        return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-        return retrofit.create(OwnerApiService::class.java)
+            .create(OwnerApiService::class.java)
     }
 }

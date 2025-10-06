@@ -13,4 +13,10 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
     <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="welcome_station_operator">Welcome Station Operator!</string>
+    <string name="operator_profile">Operator Profile</string>
+    <string name="manage_charging_station_operations">Manage charging station operations</string>
+    <string name="reports_amp_analytics"><![CDATA[Reports & Analytics]]></string>
+    <string name="session_history">Session History</string>
+    <string name="stations_details">Station Details</string>
 </resources>
