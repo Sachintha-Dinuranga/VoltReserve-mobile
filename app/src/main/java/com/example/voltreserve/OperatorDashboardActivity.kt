@@ -17,9 +17,10 @@ class OperatorDashboardActivity : AppCompatActivity() {
 
         binding.tvWelcomeOperator.text = "Welcome Station Operator!"
 
-        // Click listener for QR Code Scanner
+        // Click listener for QR Code Scanner - Navigate to QR Scanner Activity
         binding.btnStartQrScan.setOnClickListener {
-            Toast.makeText(this, "QR scanning coming soon!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, QrScannerActivity::class.java)
+            startActivity(intent)
         }
 
         // Click listener for Profile Image with error handling
@@ -31,6 +32,12 @@ class OperatorDashboardActivity : AppCompatActivity() {
                 Log.e("OperatorDashboard", "Error navigating to profile: ${e.message}")
                 Toast.makeText(this, "Profile page not available", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        // Click listener for Station Details
+        binding.tileStationDetails.setOnClickListener {
+            val intent = Intent(this, StationDetailsActivity::class.java)
+            startActivity(intent)
         }
     }
 }

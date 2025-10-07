@@ -48,8 +48,8 @@
 
             <ImageView
                 android:id="@+id/imgOperatorProfile"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:contentDescription="@string/operator_profile"
                 android:padding="8dp"
                 android:scaleType="centerInside"
@@ -124,6 +124,7 @@
                 app:cardElevation="2dp">
 
                 <LinearLayout
+                    android:id="@+id/tileStationDetails"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/green_50"

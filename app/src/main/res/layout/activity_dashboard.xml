@@ -49,8 +49,8 @@
 
             <ImageView
                 android:id="@+id/tileProfile"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:contentDescription="@string/profile"
                 android:padding="8dp"
                 android:scaleType="centerInside"
