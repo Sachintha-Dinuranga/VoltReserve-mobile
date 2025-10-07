@@ -14,11 +14,17 @@
         android:roundIcon="@drawable/logo_rounded"
         android:supportsRtl="true"
         android:theme="@style/Theme.VoltReserve">
-        <activity
+       <activity
             android:name=".OperatorProfileActivity"
             android:exported="false" />
         <activity
             android:name=".OperatorDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReservationListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReservationActivity"
             android:exported="false" />
         <activity
             android:name=".OwnerProfileActivity"
