@@ -48,7 +48,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/tileNewReservation"
+                android:id="@+id/tileProfile"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:contentDescription="@string/profile"

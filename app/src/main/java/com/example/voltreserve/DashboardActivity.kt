@@ -22,7 +22,7 @@ class DashboardActivity : AppCompatActivity() {
         binding.tvUpcomingCount.text = "5"
 
         // Click listeners for tiles
-        binding.tileNewReservation.setOnClickListener {
+        binding.tileProfile.setOnClickListener {
             startActivity(Intent(this, OwnerProfileActivity::class.java))
         }
 //
