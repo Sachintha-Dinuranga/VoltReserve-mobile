@@ -22,7 +22,8 @@
     <color name="green_50">#ECFDF5</color>
     <color name="purple_500">#8B5CF6</color>
     <color name="orange_500">#F59E0B</color>
-    <color name="red_600">#E91E63</color>
-    <color name="red_200">#ED0404</color>
 
+    <color name="red_600">#E91E63</color>
+    <color name="red_200">#DE442F</color>
+    <color name="red_50">#F8B5B5</color>
 </resources>
