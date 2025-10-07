@@ -45,7 +45,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun fetchStats() {
-        val api = RetrofitClient.getOwnerService(this)
+        val api = RetrofitClient.ownerAuthed(this)
 
         lifecycleScope.launch {
             try {
