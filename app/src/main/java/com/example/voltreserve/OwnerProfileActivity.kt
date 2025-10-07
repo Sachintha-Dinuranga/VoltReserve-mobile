@@ -28,6 +28,11 @@ class OwnerProfileActivity : AppCompatActivity() {
 
         loadProfile()
 
+        // Back button - navigate back to dashboard
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
+
         binding.btnUpdate.setOnClickListener {
             val req = UpdateOwnerRequest(
                 firstName = binding.etFirstName.text.toString(),
@@ -58,7 +63,7 @@ class OwnerProfileActivity : AppCompatActivity() {
     private fun loadProfile() {
         lifecycleScope.launch {
             try {
-                val api = RetrofitClient.getOwnerService(this@OwnerProfileActivity)
+                val api = RetrofitClient.ownerAuthed(this@OwnerProfileActivity)
                 val response = api.getProfile()
                 if (response.isSuccessful && response.body() != null) {
                     val owner = response.body()!!
@@ -88,7 +93,7 @@ class OwnerProfileActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             try {
-                val api = RetrofitClient.getOwnerService(this@OwnerProfileActivity)
+                val api = RetrofitClient.ownerAuthed(this@OwnerProfileActivity)
                 val response = api.updateProfile(req)
                 if (response.isSuccessful && response.body() != null) {
                     // Update the displayed username
@@ -118,7 +123,7 @@ class OwnerProfileActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             try {
-                val api = RetrofitClient.getOwnerService(this@OwnerProfileActivity)
+                val api = RetrofitClient.ownerAuthed(this@OwnerProfileActivity)
                 val response = api.changePassword(req)
                 if (response.isSuccessful) {
                     Toast.makeText(this@OwnerProfileActivity, "Password changed successfully!", Toast.LENGTH_SHORT).show()
@@ -154,7 +159,7 @@ class OwnerProfileActivity : AppCompatActivity() {
     private fun deactivateAccount() {
         lifecycleScope.launch {
             try {
-                val api = RetrofitClient.getOwnerService(this@OwnerProfileActivity)
+                val api = RetrofitClient.ownerAuthed(this@OwnerProfileActivity)
                 val response = api.deactivate()
                 if (response.isSuccessful) {
                     Toast.makeText(this@OwnerProfileActivity,
