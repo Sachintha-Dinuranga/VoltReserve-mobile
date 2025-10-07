@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
 
         <!-- Navbar Section -->
         <LinearLayout
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="20dp">
 
             <!-- Back Button (Square Rounded) -->
             <androidx.cardview.widget.CardView
@@ -70,7 +70,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/profile"
+                    android:src="@drawable/ev_owner_profile"
                     android:scaleType="centerCrop"
                     android:contentDescription="@string/app_name" />
             </androidx.cardview.widget.CardView>

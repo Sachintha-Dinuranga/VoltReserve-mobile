@@ -48,9 +48,8 @@
 
             <ImageView
                 android:id="@+id/imgOperatorProfile"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:background="@drawable/profile_bg"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 android:contentDescription="@string/operator_profile"
                 android:padding="8dp"
                 android:scaleType="centerInside"
