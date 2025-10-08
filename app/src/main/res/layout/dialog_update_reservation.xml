@@ -2,24 +2,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="20dp"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- Select Date -->
     <Button
         android:id="@+id/btnSelectDate"
         android:text="Select Date"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#10B981"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:paddingVertical="12dp"
+        android:fontFamily="sans-serif-medium" />
 
+    <!-- Select Start Time -->
     <Button
         android:id="@+id/btnSelectStart"
         android:text="Select Start Time"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#10B981"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:paddingVertical="12dp"
+        android:fontFamily="sans-serif-medium" />
 
+    <!-- Select End Time -->
     <Button
         android:id="@+id/btnSelectEnd"
         android:text="Select End Time"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#10B981"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp"
+        android:fontFamily="sans-serif-medium" />
+
 </LinearLayout>
