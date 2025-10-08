@@ -2,32 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Screen Heading -->
+    <TextView
+        android:id="@+id/tvHeading"
+        android:text="Station Reservations"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#112540"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Sub-heading -->
     <TextView
         android:text="Select Location"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#112540"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"/>
 
+    <!-- Location Spinner -->
     <Spinner
         android:id="@+id/spinnerLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
-        android:layout_marginBottom="16dp" />
+        android:backgroundTint="#10B981"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp" />
 
+    <!-- Loading Indicator -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:indeterminateTint="#10B981"
+        android:layout_marginBottom="16dp" />
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerStations"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
 </LinearLayout>
