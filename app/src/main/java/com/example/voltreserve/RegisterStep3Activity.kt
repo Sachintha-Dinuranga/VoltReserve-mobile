@@ -51,7 +51,7 @@ class RegisterStep3Activity : AppCompatActivity() {
     private fun registerUser(request: RegisterRequest) {
         lifecycleScope.launch {
             try {
-                val response = RetrofitClient.instance.register(request)
+                val response = RetrofitClient.ownerPublic.register(request)
                 if (response.isSuccessful && response.body() != null) {
                     val user = response.body()!!
                     Toast.makeText(

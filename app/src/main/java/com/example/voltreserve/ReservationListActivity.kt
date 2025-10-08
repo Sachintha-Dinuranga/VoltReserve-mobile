@@ -25,7 +25,7 @@ class ReservationListActivity : AppCompatActivity() {
     private lateinit var adapter: ReservationAdapter
     private var allReservations: List<ReservationDto> = listOf()
 
-    private val ownerService by lazy { RetrofitClient.getOwnerService(this) }
+    private val ownerService by lazy { RetrofitClient.ownerAuthed(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
