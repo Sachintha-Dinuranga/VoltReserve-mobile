@@ -1,9 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- Base application theme -->
     <style name="Base.Theme.VoltReserve" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary color (toolbar, buttons, etc) -->
+        <item name="colorPrimary">@color/green_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Primary variant / darker shade (status bar) -->
+        <item name="colorPrimaryContainer">@color/green_600</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+
+        <!-- Secondary / accent color (FABs, switches, highlights) -->
+        <item name="colorSecondary">@color/green_500</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Backgrounds -->
+        <item name="android:colorBackground">@color/gray_50</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
+
+        <!-- Status bar color (optional override) -->
+        <item name="android:statusBarColor">@color/green_600</item>
+        <!-- Navigation bar color (optional) -->
+        <item name="android:navigationBarColor">@color/green_500</item>
     </style>
 
+    <!-- App theme -->
     <style name="Theme.VoltReserve" parent="Base.Theme.VoltReserve" />
 </resources>

@@ -31,7 +31,7 @@ class ReservationActivity : AppCompatActivity() {
     private var selectedStartTime: String? = null
     private var selectedEndTime: String? = null
 
-    private val ownerService by lazy { RetrofitClient.getOwnerService(this) } // ✅ Token-aware instance
+    private val ownerService by lazy { RetrofitClient.ownerAuthed(this) } // ✅ Token-aware instance
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

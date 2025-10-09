@@ -13,25 +13,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.voltreserve.client.RetrofitClient
 import com.example.voltreserve.models.CreateReservationRequest
 import com.example.voltreserve.models.ReservationDto
+import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ReservationListActivity : AppCompatActivity() {
 
-    private lateinit var spinnerFilter: Spinner
+    private lateinit var tabLayout: TabLayout
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var adapter: ReservationAdapter
     private var allReservations: List<ReservationDto> = listOf()
 
-    private val ownerService by lazy { RetrofitClient.getOwnerService(this) }
+    private val ownerService by lazy { RetrofitClient.ownerAuthed(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reservation_list)
 
-        spinnerFilter = findViewById(R.id.spinnerFilter)
+        tabLayout = findViewById(R.id.tabLayout)
         recyclerView = findViewById(R.id.recyclerReservations)
         progressBar = findViewById(R.id.progressBar)
 
@@ -42,27 +43,33 @@ class ReservationListActivity : AppCompatActivity() {
         )
         recyclerView.adapter = adapter
 
-        setupFilterDropdown()
-        loadReservations()
+        setupTabs()
+        loadReservations("All")
     }
 
     // -----------------------------
-    // Setup Dropdown Filter
+    // Setup Tabs (instead of Spinner)
     // -----------------------------
-    private fun setupFilterDropdown() {
+    private fun setupTabs() {
         val statuses = listOf("Pending", "Approved", "Cancelled", "Completed", "All")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, statuses)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerFilter.adapter = adapter
 
-        spinnerFilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, id: Long) {
-                // Reload reservations each time the user switches filters
-                loadReservations(statuses[pos])
+        statuses.forEach { status ->
+            tabLayout.addTab(tabLayout.newTab().setText(status))
+        }
+
+        // Default tab selection
+        tabLayout.getTabAt(statuses.indexOf("All"))?.select()
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.text?.toString()?.let { loadReservations(it) }
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {}
-        }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                tab?.text?.toString()?.let { loadReservations(it) }
+            }
+        })
     }
 
     // -----------------------------
@@ -173,7 +180,8 @@ class ReservationListActivity : AppCompatActivity() {
                 val response = ownerService.updateReservation(res.id, req)
                 if (response.isSuccessful) {
                     Toast.makeText(this@ReservationListActivity, "Updated successfully", Toast.LENGTH_SHORT).show()
-                    loadReservations(spinnerFilter.selectedItem.toString())
+                    val currentStatus = tabLayout.getTabAt(tabLayout.selectedTabPosition)?.text.toString()
+                    loadReservations(currentStatus)
                 } else {
                     Toast.makeText(this@ReservationListActivity, "Failed to update", Toast.LENGTH_SHORT).show()
                 }
@@ -201,7 +209,8 @@ class ReservationListActivity : AppCompatActivity() {
                 val response = ownerService.cancelReservation(id)
                 if (response.isSuccessful) {
                     Toast.makeText(this@ReservationListActivity, "Reservation cancelled", Toast.LENGTH_SHORT).show()
-                    loadReservations(spinnerFilter.selectedItem.toString())
+                    val currentStatus = tabLayout.getTabAt(tabLayout.selectedTabPosition)?.text.toString()
+                    loadReservations(currentStatus)
                 } else {
                     Toast.makeText(this@ReservationListActivity, "Failed to cancel", Toast.LENGTH_SHORT).show()
                 }

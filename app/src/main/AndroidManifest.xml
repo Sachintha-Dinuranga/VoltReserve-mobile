@@ -19,6 +19,12 @@
         <meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBE60-K_dsSyduR2MIJBDr4zv4PfRtVCFY" />
+       <activity
+            android:name=".OperatorProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OperatorDashboardActivity"
+            android:exported="false" />
         <activity
             android:name=".ReservationListActivity"
             android:exported="false" />
