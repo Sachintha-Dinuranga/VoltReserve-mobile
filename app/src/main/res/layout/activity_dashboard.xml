@@ -262,6 +262,7 @@
                 app:cardElevation="2dp">
 
                 <LinearLayout
+                    android:id="@+id/tileChargingStations"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/gray_50"

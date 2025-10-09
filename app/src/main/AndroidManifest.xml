@@ -41,6 +41,10 @@
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
+            android:name=".MapActivity"
+            android:exported="false"
+            android:label="Charging Stations" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
