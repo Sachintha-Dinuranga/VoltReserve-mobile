@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object  RetrofitClient {
-    private const val BASE_URL = "http://192.168.8.135:5029/"
+    private const val BASE_URL = "http://172.20.10.3:5029/"
 
     // For public endpoints (owner register/login, staff login)
     private val publicRetrofit: Retrofit by lazy {
