@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +16,9 @@
         android:roundIcon="@drawable/logo_rounded"
         android:supportsRtl="true"
         android:theme="@style/Theme.VoltReserve">
+        <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBE60-K_dsSyduR2MIJBDr4zv4PfRtVCFY" />
        <activity
             android:name=".OperatorProfileActivity"
             android:exported="false" />
@@ -41,6 +46,10 @@
         <activity
             android:name=".DashboardActivity"
             android:exported="false" />
+        <activity
+            android:name=".MapActivity"
+            android:exported="false"
+            android:label="Charging Stations" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

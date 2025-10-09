@@ -2,6 +2,7 @@ package com.example.voltreserve
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -36,6 +37,13 @@ class DashboardActivity : AppCompatActivity() {
 //        binding.tileChargingStations.setOnClickListener {
 //            startActivity(Intent(this, ChargingStationsActivity::class.java))
 //        }
+        // 2. Set a click listener on the layout
+        // Use the binding object, just like your other listeners
+        binding.tileChargingStations.setOnClickListener {
+            val intent = Intent(this, MapActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onResume() {
