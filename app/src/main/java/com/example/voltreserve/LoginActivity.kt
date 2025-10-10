@@ -34,35 +34,58 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.tvGoRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterStep1Activity::class.java))
         }
     }
 
     private fun loginUser(identifier: String, password: String) {
         lifecycleScope.launch {
             try {
-                val response = RetrofitClient.instance.login(LoginRequest(identifier, password))
-                if (response.isSuccessful && response.body() != null) {
-                    val loginResponse = response.body()!!
-                    // Save session
-                    dbHelper.saveSession(
-                        loginResponse.token,
-                        loginResponse.role,
-                        loginResponse.email,
-                        loginResponse.expiresAtUtc
-                    )
-                    Toast.makeText(this@LoginActivity, "Login successful!", Toast.LENGTH_SHORT).show()
-
-                    // Navigate to dashboard
-                    startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-                    finish()
-                } else {
-                    Toast.makeText(this@LoginActivity, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                // 1) Try EV Owner login
+                val ownerRes = RetrofitClient.ownerPublic.login(
+                    com.example.voltreserve.models.LoginRequest(identifier, password)
+                )
+                if (ownerRes.isSuccessful && ownerRes.body() != null) {
+                    val r = ownerRes.body()!!
+                    persistAndRoute(r.token, r.role, r.email, r.expiresAtUtc)
+                    return@launch
                 }
+
+                // 2) If that failed (401/404), try staff (Backoffice/StationOperator)
+                val staffRes = RetrofitClient.staffPublic.staffLogin(
+                    com.example.voltreserve.models.StaffLoginRequest(
+                        email = identifier, // staff login expects email (not NIC)
+                        password = password
+                    )
+                )
+                if (staffRes.isSuccessful && staffRes.body() != null) {
+                    val r = staffRes.body()!!
+                    persistAndRoute(r.token, r.role, r.email, r.expiresAtUtc)
+                    return@launch
+                }
+
+                Toast.makeText(this@LoginActivity, "Invalid credentials", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 e.printStackTrace()
                 Toast.makeText(this@LoginActivity, "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
             }
         }
     }
+
+    private fun persistAndRoute(token: String, role: String, email: String, expiresAtUtc: String) {
+        dbHelper.saveSession(token, role, email, expiresAtUtc)
+        Toast.makeText(this@LoginActivity, "Login successful!", Toast.LENGTH_SHORT).show()
+
+        when (role.lowercase()) {
+            "owner" -> startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+            "stationoperator" -> startActivity(Intent(this@LoginActivity, OperatorDashboardActivity::class.java))
+            "backoffice" -> {
+                // optional: if you later ship a small staff app screen, route there
+                startActivity(Intent(this@LoginActivity, OperatorDashboardActivity::class.java))
+            }
+            else -> Toast.makeText(this@LoginActivity, "Unknown role: $role", Toast.LENGTH_SHORT).show()
+        }
+        finish()
+    }
+
 }

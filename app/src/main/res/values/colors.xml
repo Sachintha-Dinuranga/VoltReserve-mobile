@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Primary Colors (Backgrounds)-->
+    <color name="bgColorLight">#56DB0D</color>
+
+    <!--Secondary Colors (Texts)-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#000000</color>
+
+    <color name="green_500">#10B981</color>
+    <color name="green_600">#059669</color>
+    <color name="green_700">#047857</color>
+    <color name="gray_50">#F9FAFB</color>
+    <color name="gray_300">#9EA5AF</color>
+    <color name="gray_500">#6B7280</color>
+    <color name="gray_600">#4B5563</color>
+
+    <color name="blue_50">#EFF6FF</color>
+    <color name="blue_500">#3B82F6</color>
+    <color name="blue_700">#1D4ED8</color>
+    <color name="green_50">#ECFDF5</color>
+    <color name="purple_500">#8B5CF6</color>
+    <color name="orange_500">#F59E0B</color>
+
+    <color name="red_600">#E91E63</color>
+    <color name="red_200">#DE442F</color>
+    <color name="red_50">#F8B5B5</color>
 </resources>

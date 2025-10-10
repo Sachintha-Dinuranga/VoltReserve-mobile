@@ -41,4 +41,36 @@ class SessionDbHelper(context: Context) :
         db.close()
         return token
     }
+
+    // Add this method to clear the session
+    fun clearSession() {
+        val db = writableDatabase
+        db.execSQL("DELETE FROM session")
+        db.close()
+    }
+
+    fun getEmail(): String? {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT email FROM session LIMIT 1", null)
+        var email: String? = null
+        if (cursor.moveToFirst()) {
+            email = cursor.getString(0)
+        }
+        cursor.close()
+        db.close()
+        return email
+    }
+
+    fun getRole(): String? {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT role FROM session LIMIT 1", null)
+        var role: String? = null
+        if (cursor.moveToFirst()) {
+            role = cursor.getString(0)
+        }
+        cursor.close()
+        db.close()
+        return role
+    }
+
 }

@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">VoltReserve</string>
+    <string name="logo_Image">logo</string>
+    <string name="logo_title">logo_title</string>
+    <string name="ev_charging_solutions">EV Charging Solutions</string>
+    <string name="powered_by_voltreserve">Powered by VoltReserve</string>
+    <string name="upper_bg">upper_bg</string>
+    <string name="below_bg">below_bg</string>
+    <string name="voltreserve_logo">VoltReserve Logo</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="sign_in_to_your_voltreserve_account">Sign in to your VoltReserve account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="welcome_station_operator">Welcome Station Operator!</string>
+    <string name="operator_profile">Operator Profile</string>
+    <string name="manage_charging_station_operations">Manage charging station operations</string>
+    <string name="reports_amp_analytics"><![CDATA[Reports & Analytics]]></string>
+    <string name="session_history">Session History</string>
+    <string name="stations_details">Station Details</string>
+    <string name="profile">Profile</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="change_password">Change Password</string>
+    <string name="back">back\n</string>
 </resources>
