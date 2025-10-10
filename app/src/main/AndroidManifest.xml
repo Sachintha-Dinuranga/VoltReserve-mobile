@@ -18,7 +18,7 @@
         android:theme="@style/Theme.VoltReserve">
         <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBE60-K_dsSyduR2MIJBDr4zv4PfRtVCFY" />
+        android:value= "${MAPS_API_KEY}" />
        <activity
             android:name=".OperatorProfileActivity"
             android:exported="false" />
