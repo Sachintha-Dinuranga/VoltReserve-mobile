@@ -1,9 +1,23 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
 
+// 1. Create a Properties object to load the local.properties file
+// 1. Create a Properties object to load the local.properties file
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    // This line will now work correctly
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
+
 android {
+
+
     namespace = "com.example.voltreserve"
     compileSdk = 36
 
@@ -15,6 +29,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // It reads the "MAPS_API_KEY" value from the local.properties file.
+        manifestPlaceholders["MAPS_API_KEY"] = localProperties.getProperty("MAPS_API_KEY") ?: ""
     }
 
     buildTypes {
@@ -51,4 +67,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+
 }
