@@ -41,7 +41,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //Initialize Retrofit (no auth)
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.2:5029/")
+            .baseUrl("http://192.168.8.135:5029/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
